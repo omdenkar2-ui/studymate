@@ -1,0 +1,42 @@
+Lecture 4 — Gradient Descent
+=============================
+
+Gradient descent is an iterative first-order optimisation algorithm used to
+find a local minimum of a differentiable function. In machine learning we
+use it to minimise a loss function with respect to the model's parameters.
+
+Update rule
+-----------
+At each step we update the parameters theta using:
+
+    theta_{t+1} = theta_t - eta * grad L(theta_t)
+
+where eta is the learning rate and grad L(theta_t) is the gradient of the
+loss at the current parameters.
+
+Intuition
+---------
+The gradient points in the direction of steepest *ascent* of the loss.
+Subtracting it moves us toward lower loss. The learning rate scales the
+step size; too large and we overshoot, too small and training is slow.
+
+Variants
+--------
+- Batch gradient descent: uses the full dataset to compute the gradient.
+- Stochastic gradient descent (SGD): uses one random sample per step.
+- Mini-batch gradient descent: uses a small batch, a compromise that works
+  well in practice.
+
+Common issues
+-------------
+- Vanishing / exploding gradients in deep networks.
+- Getting stuck in saddle points, not local minima (the usual culprit in
+  high-dimensional optimisation).
+- Learning rate schedules (step decay, cosine annealing) help a lot.
+
+Lecture 5 — Backpropagation
+============================
+Backpropagation is an efficient algorithm for computing gradients of the
+loss with respect to every parameter in a neural network. It applies the
+chain rule layer by layer, reusing intermediate results so the total
+cost is linear in the number of parameters, not quadratic.
